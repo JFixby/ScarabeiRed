@@ -1,0 +1,9 @@
+sourceCompatibility = 1.8
+
+
+dependencies {
+    compile "com.github.Scarabei.ScarabeiAPI:scarabei-api:$scarabeiAPILevel"
+    compile "com.github.Scarabei.ScarabeiAPI:scarabei-api-ios:$scarabeiAPILevel"
+
+    compile project(":scarabei-red")
+}

@@ -1,0 +1,10 @@
+sourceCompatibility = 1.6
+
+dependencies {
+    compile "com.github.Scarabei.ScarabeiAPI:scarabei-api:$scarabeiAPILevel"
+    compile "com.github.Scarabei.ScarabeiAPI:scarabei-api-android:$scarabeiAPILevel"
+
+    compile project(":scarabei-red")
+
+    compile group: 'com.google.android', name: 'android', version: '4.1.1.4'
+}
