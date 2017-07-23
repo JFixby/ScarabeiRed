@@ -148,6 +148,9 @@ public abstract class AbstractRedFile implements File {
 
 	@Override
 	public void writeBytes (final ByteArray bytes, final boolean append) throws IOException {
+		if (this.isFolder()) {
+			throw new IOException("Can't write. This is folder: " + this);
+		}
 		final FileOutputStream os = this.getFileSystem().newFileOutputStream(this, append);
 		os.open();
 		try {
