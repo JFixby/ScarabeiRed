@@ -14,19 +14,21 @@ import com.jfixby.scarabei.api.sys.settings.SystemSettings;
 import com.jfixby.scarabei.api.ver.Version;
 import com.jfixby.scarabei.red.sys.RedDeviceInfo;
 
-import android.app.Activity;
 import android.app.ActivityManager;
+import android.app.Application;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Build;
 import android.util.TypedValue;
+import android.view.Display;
+import android.view.WindowManager;
 
 public class RedAndroidComponent implements AndroidComponent {
 	Context context;
-	private final Activity app;
+	private final Application app;
 
-	public RedAndroidComponent (final Activity redTriplaneAndroidApplication) {
+	public RedAndroidComponent (final Application redTriplaneAndroidApplication) {
 		this.app = redTriplaneAndroidApplication;
 		this.context = redTriplaneAndroidApplication.getBaseContext();
 	}
@@ -89,7 +91,9 @@ public class RedAndroidComponent implements AndroidComponent {
 		final DisplayMetrics displayMetrics = new DisplayMetrics();
 		final android.util.DisplayMetrics dm = new android.util.DisplayMetrics();
 		try {
-			this.app.getWindowManager().getDefaultDisplay().getMetrics(dm);
+			final WindowManager winman = (WindowManager)this.context.getSystemService(Context.WINDOW_SERVICE);
+			final Display display = winman.getDefaultDisplay();
+			display.getMetrics(dm);
 		} catch (final Exception e) {
 			Err.reportError(e);
 		}
